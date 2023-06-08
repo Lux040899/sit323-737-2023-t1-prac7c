@@ -1,0 +1,16 @@
+version: '3.7'
+
+services: 
+  webservice:
+    restart: always 
+    image: lux4899/test
+    ports: 
+      - 49160:8080
+
+    healthcheck:
+      test: curl --fail http://localhost:8080 || exit 1
+      interval: 2s
+      retries: 1
+      start_period: 1s
+      timeout: 10s
+ 
